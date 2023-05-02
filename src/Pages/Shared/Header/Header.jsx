@@ -39,13 +39,22 @@ const Header = () => {
             {navMenu}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link to="/" className="font-bold text-2xl">
+          Master chef
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navMenu}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <label className="btn btn-ghost btn-circle avatar mr-4">
+          <div className="w-10 rounded-full">
+            <img src="" alt="user photo" />
+          </div>
+        </label>
+        <Link to="/login" className="btn">
+          Login
+        </Link>
       </div>
     </div>
   );

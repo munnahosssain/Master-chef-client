@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+
+.banner-mage {
+    min-height: 93.3vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to bottom, #434040f1, #02020280), url('./assets/images/banner.png');
+}
+
+@media screen and (max-width: 425px) {
+    .banner-mage {
+        min-height: 50vh;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner-mage {
+        min-height: 80vh;
+    }
+}

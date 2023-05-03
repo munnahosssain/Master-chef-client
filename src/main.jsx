@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home/Home.jsx";
-import RecipeDetails from "./Pages/RecipeDetails/RecipeDetails.jsx";
+import RecipeInformation from "./Pages/RecipeInformation/RecipeInformation/RecipeInformation.jsx";
 import Login from "./Pages/Shared/Login/Login.jsx";
 import Register from "./Pages/Shared/Register/Register.jsx";
 import Terms from "./Pages/Shared/Terms/Terms.jsx";
@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <div>Error</div>,
     children: [
       {
         path: "/",
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: ":id",
-    element: <RecipeDetails />,
+    element: <RecipeInformation />,
     loader: ({ params }) =>
       fetch(
         `https://master-chef-server-munnahosssain.vercel.app/chefInfo/${params.id}`

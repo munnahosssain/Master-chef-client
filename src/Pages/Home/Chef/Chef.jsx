@@ -10,7 +10,7 @@ const Chef = ({ chef }) => {
     numberOfRecipes,
     likes,
   } = chef;
-  console.log(_id);
+
   return (
     <div className="card lg:card-side bg-base-100 shadow-md">
       <figure>

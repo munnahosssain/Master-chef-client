@@ -16,13 +16,11 @@ const Chef = ({ chef }) => {
       <figure>
         <img src={chefPicture} alt="chef Picture" />
       </figure>
-      <div className="card-body">
+      <div className="card-body sm:p-10">
         <h2 className="card-title">{chefName}</h2>
-        <div>
-          <p className="my-3">Years of experience: {yearsOfExperience}</p>
-          <p className="my-3">Numbers of recipes {numberOfRecipes}</p>
-          <p>Likes: {likes}</p>
-        </div>
+        <p className="my-">Years of experience: {yearsOfExperience}</p>
+        <p className="my-">Numbers of recipes {numberOfRecipes}</p>
+        <p>Likes: {likes}</p>
         <div className="card-actions justify-end">
           <Link className="btn btn-primary" to={`/${_id}`}>
             View Recipes

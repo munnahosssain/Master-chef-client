@@ -18,7 +18,7 @@ const LatestNews = () => {
           </figure>
           <div className="card-body items-center text-center bg-[#f9f7ed] m-12 mt-[-40px] rounded-2xl">
             <p className="flex items-center">
-              <BsFillTagsFill />
+              <BsFillTagsFill className="mr-2" />
               Smoke-meat
             </p>
             <h2 className="card-title">How to cook perfect prime meat</h2>
@@ -30,7 +30,7 @@ const LatestNews = () => {
           </figure>
           <div className="card-body items-center text-center bg-[#f9f7ed] m-12 mt-[-40px] rounded-2xl">
             <p className="flex items-center">
-              <BsFillTagsFill />
+              <BsFillTagsFill className="mr-2" />
               Smoke-meat
             </p>
             <h2 className="card-title">How to cook perfect prime meat</h2>
@@ -42,7 +42,7 @@ const LatestNews = () => {
           </figure>
           <div className="card-body items-center text-center bg-[#f9f7ed] m-12 mt-[-40px] rounded-2xl">
             <p className="flex items-center">
-              <BsFillTagsFill />
+              <BsFillTagsFill className="mr-2" />
               Smoke-meat
             </p>
             <h2 className="card-title">How to cook perfect prime meat</h2>

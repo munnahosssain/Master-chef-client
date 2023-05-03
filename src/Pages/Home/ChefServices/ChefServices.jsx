@@ -9,7 +9,7 @@ const ChefServices = () => {
       <div className="text-center">
         <h3 className="text-2xl">What more do you need?</h3>
         <h1 className="text-5xl my-5 font-semibold">
-          Reasons to buy Master Chop
+          Reasons to buy Master's Recipe
         </h1>
       </div>
       <div className="justify-center gap-5 grid lg:grid-cols-3">

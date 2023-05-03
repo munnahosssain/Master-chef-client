@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
+import React from "react";
+import App from "./App.jsx";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home/Home.jsx";
 import RecipeInformation from "./Pages/RecipeInformation/RecipeInformation/RecipeInformation.jsx";
@@ -11,6 +11,7 @@ import Terms from "./Pages/Shared/Terms/Terms.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Error from "./Pages/Shared/Error/Error.jsx";
+import Blog from "./Pages/Blog/Blog.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: ":id",
+        element: <RecipeInformation />,
+        loader: ({ params }) =>
+          fetch(
+            `https://master-chef-server-munnahosssain.vercel.app/chefInfo/${params.id}`
+          ),
+      },
+      {
         path: "/blog",
-        element: <div>Blog</div>,
+        element: <Blog />,
       },
       {
         path: "/login",
@@ -39,14 +48,6 @@ const router = createBrowserRouter([
         element: <Terms />,
       },
     ],
-  },
-  {
-    path: ":id",
-    element: <RecipeInformation />,
-    loader: ({ params }) =>
-      fetch(
-        `https://master-chef-server-munnahosssain.vercel.app/chefInfo/${params.id}`
-      ),
   },
 ]);
 

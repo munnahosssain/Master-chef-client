@@ -48,7 +48,7 @@ const Recipes = ({ recipe }) => {
                 notify();
               }}
               size={48}
-              color={favorite ? "red" : "gray"}
+              color={favorite ? "gray" : "red"}
               className={`${favorite ? "btn-disabled" : ""}`}
             />
           </div>

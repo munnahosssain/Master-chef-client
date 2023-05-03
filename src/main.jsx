@@ -8,12 +8,15 @@ import RecipeInformation from "./Pages/RecipeInformation/RecipeInformation/Recip
 import Login from "./Pages/Shared/Login/Login.jsx";
 import Register from "./Pages/Shared/Register/Register.jsx";
 import Terms from "./Pages/Shared/Terms/Terms.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Error from "./Pages/Shared/Error/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>Error</div>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -49,6 +52,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ToastContainer />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(name, photo, email, password);
+
+    createUser(email, password)
+      .then(result => {
+        const CreateUser = result.user;
+        console.log(CreateUser);
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   return (
     <div className="hero">
       <div className="hero-content flex-col">
@@ -9,7 +33,7 @@ const Register = () => {
           <h1 className="text-5xl font-bold">Register Form!</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl ">
-          <form className="card-body">
+          <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -55,14 +79,16 @@ const Register = () => {
                 placeholder="Password"
                 className="input input-bordered"
               />
-              <label className="label">
+              {/* <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
-              </label>
+              </label> */}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button type="submit" className="btn btn-primary">
+                Register
+              </button>
             </div>
             <p className="text-[#BDBDBD] font-semibold">
               By signing up, you agree to our
@@ -72,10 +98,10 @@ const Register = () => {
               </Link>
             </p>
             <p className="text-[#BDBDBD] font-semibold mt-[-10px]">
-              Don't have an account?
+              Already have an account?
               <Link to="/login" className="font-bold underline">
                 {" "}
-                Sign up
+                Log in
               </Link>
             </p>
           </form>

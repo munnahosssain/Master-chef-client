@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
   const navMenu = (
@@ -12,6 +13,9 @@ const Header = () => {
       </li>
     </>
   );
+
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="bg-[#042f2e] text-neutral-content">
       <div className="lg:mx-48">
@@ -55,7 +59,7 @@ const Header = () => {
               </div>
             </label>
             <Link to="/login" className="btn">
-              Login
+              {user.displayName}
             </Link>
           </div>
         </div>

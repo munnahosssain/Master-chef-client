@@ -12,6 +12,7 @@ import Error from "./Pages/Shared/Error/Error.jsx";
 import Register from "./Pages/Shared/Register/Register.jsx";
 import RecipeInformation from "./Pages/RecipeInformation/RecipeInformation/RecipeInformation.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AuthProvider from "./AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ToastContainer />
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

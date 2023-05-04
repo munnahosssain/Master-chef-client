@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 export const AuthContext = createContext(null);
@@ -26,24 +27,36 @@ const AuthProvider = ({ children }) => {
   };
 
   const loggedUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const githubSignIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
+  };
+
+  const createProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, loggedUser => {
       setUser(loggedUser);
+      setLoading(false);
     });
     return () => {
       return subscribe();
@@ -58,6 +71,7 @@ const AuthProvider = ({ children }) => {
     githubSignIn,
     logOut,
     loading,
+    createProfile,
   };
 
   return (

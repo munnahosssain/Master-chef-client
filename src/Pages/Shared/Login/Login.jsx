@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const { loggedUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state.from.pathname || "/";
 
   const handleLoggedInUser = event => {
     event.preventDefault();
@@ -17,6 +20,7 @@ const Login = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch(error => {
         const errorCode = error.code;
@@ -28,17 +32,14 @@ const Login = () => {
   const handleGoogleSingIn = () => {
     googleSignIn()
       .then(result => {
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
         const googleUser = result.user;
         console.log(googleUser);
+        navigate(from, { replace: true });
       })
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // const email = error.customData.email;
-        // const credential = GoogleAuthProvider.credentialFromError(error);
       });
   };
 
@@ -47,6 +48,7 @@ const Login = () => {
       .then(result => {
         const githubUser = result.user;
         console.log(githubUser);
+        navigate(from, { replace: true });
       })
       .catch(error => {
         const errorCode = error.code;
@@ -87,11 +89,6 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                {/* <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label> */}
               </div>
               <div className="form-control mt-6">
                 <button type="submit" className="btn btn-accent text-white">

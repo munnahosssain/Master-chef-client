@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, createProfile } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -17,6 +17,8 @@ const Header = () => {
         console.log(errorCode, errorMessage);
       });
   };
+
+  // console.log(createProfile);
 
   const navMenu = (
     <>
@@ -69,7 +71,11 @@ const Header = () => {
             {user && (
               <label className="btn btn-ghost btn-circle avatar mr-4">
                 <div className="w-10 rounded-full">
-                  <img src="" alt="user photo" />
+                  <img
+                    src={user?.photoURL}
+                    title={user?.displayName}
+                    alt="user photo"
+                  />
                 </div>
               </label>
             )}

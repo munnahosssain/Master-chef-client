@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, createProfile } = useContext(AuthContext);
 
   const handleRegister = event => {
     event.preventDefault();
@@ -12,17 +12,18 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name, photo, email, password);
 
     createUser(email, password)
       .then(result => {
         const CreateUser = result.user;
         console.log(CreateUser);
+        createProfile(name, photo)
+          .then(result => {})
+          .catch(error => {});
       })
       .catch(error => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.log(errorMessage);
       });
   };
 
@@ -42,7 +43,7 @@ const Register = () => {
                 required
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder="Name *"
                 className="input input-bordered"
               />
             </div>
@@ -51,9 +52,10 @@ const Register = () => {
                 <span className="label-text">Photo URL</span>
               </label>
               <input
+                required
                 type="text"
                 name="photo"
-                placeholder="Photo URL"
+                placeholder="Photo URL *"
                 className="input input-bordered"
               />
             </div>
@@ -65,7 +67,7 @@ const Register = () => {
                 required
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Email *"
                 className="input input-bordered"
               />
             </div>
@@ -74,16 +76,12 @@ const Register = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                required
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Password *"
                 className="input input-bordered"
               />
-              {/* <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label> */}
             </div>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-accent  text-white">

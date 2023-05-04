@@ -14,7 +14,9 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    form.reset();
+
+    setError("");
+    setFirebaseError("");
 
     if (password.length < 6) {
       return setError("Password should be at least 6 characters");
@@ -27,6 +29,7 @@ const Register = () => {
         createProfile(name, photo)
           .then(result => {})
           .catch(error => {});
+        form.reset();
       })
       .catch(error => {
         const errorMessage = error.message;

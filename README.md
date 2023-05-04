@@ -45,7 +45,7 @@ The following are the inputs contained in the contact us form:
 
 ### The table below shows the form sections and inputs that are in the sections
 
-| Section          | Fields            |
+| Section          | Inputs            |
 | ---------------- | ----------------- | --- |
 | Register Details | User name         |
 |                  | Photo Url         |     |

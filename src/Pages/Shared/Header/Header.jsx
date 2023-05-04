@@ -3,6 +3,21 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(result => {
+        const loggedOut = result.user;
+        console.log(loggedOut);
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   const navMenu = (
     <>
       <li>
@@ -13,18 +28,6 @@ const Header = () => {
       </li>
     </>
   );
-
-  const { user, logOut } = useContext(AuthContext);
-
-  const handleLogOut = () => {
-    logOut()
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch(error => {
-        // An error happened.
-      });
-  };
 
   return (
     <div className="bg-[#042f2e] text-neutral-content">
@@ -70,6 +73,7 @@ const Header = () => {
                 </div>
               </label>
             )}
+
             {user ? (
               <button onClick={handleLogOut} className="btn">
                 LogOut

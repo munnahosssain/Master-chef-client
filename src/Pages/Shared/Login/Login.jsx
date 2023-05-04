@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { loggedUser, googleSignIn } = useContext(AuthContext);
+  const { loggedUser, googleSignIn, githubSignIn } = useContext(AuthContext);
 
   const handleLoggedInUser = event => {
     event.preventDefault();
@@ -25,8 +25,7 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSingIn = event => {
-    // event.preventDefault();
+  const handleGoogleSingIn = () => {
     googleSignIn()
       .then(result => {
         // const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -40,6 +39,19 @@ const Login = () => {
         console.log(errorCode, errorMessage);
         // const email = error.customData.email;
         // const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then(result => {
+        const githubUser = result.user;
+        console.log(githubUser);
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -87,6 +99,7 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <div className="divider">OR</div>
             <div className="form-control">
               <button
                 onClick={handleGoogleSingIn}
@@ -98,7 +111,11 @@ const Login = () => {
               </button>
             </div>
             <div className="form-control">
-              <button type="submit" className="btn btn-outline">
+              <button
+                onClick={handleGithubSignIn}
+                type="submit"
+                className="btn btn-outline"
+              >
                 <FaGithub className="mr-1" size={24} /> Github signIn
               </button>
             </div>

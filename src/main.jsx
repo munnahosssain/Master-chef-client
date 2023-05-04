@@ -13,6 +13,7 @@ import Register from "./Pages/Shared/Register/Register.jsx";
 import RecipeInformation from "./Pages/RecipeInformation/RecipeInformation/RecipeInformation.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import PrivateRoute from "./Pages/routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: ":id",
-        element: <RecipeInformation />,
+        element: (
+          <PrivateRoute>
+            <RecipeInformation />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://master-chef-server-munnahosssain.vercel.app/chefInfo/${params.id}`

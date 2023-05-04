@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const [error, setError] = useState("");
+  const [firebaseError, setFirebaseError] = useState("");
   const { createUser, createProfile } = useContext(AuthContext);
 
   const handleRegister = event => {
@@ -12,6 +14,11 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    form.reset();
+
+    if (password.length < 6) {
+      return setError("Password should be at least 6 characters");
+    }
 
     createUser(email, password)
       .then(result => {
@@ -23,7 +30,7 @@ const Register = () => {
       })
       .catch(error => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setFirebaseError(errorMessage);
       });
   };
 
@@ -33,7 +40,7 @@ const Register = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register Form!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl ">
+        <div className="card flex-shrink-0 w-full max-w-xl shadow-xl ">
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -83,6 +90,8 @@ const Register = () => {
                 className="input input-bordered"
               />
             </div>
+            <p className="text-warning">{error}</p>
+            <p className="text-warning">{firebaseError}</p>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-accent  text-white">
                 Register

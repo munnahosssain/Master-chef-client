@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const [firebaseError, setFirebaseError] = useState("");
+
   const { loggedUser, googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,6 +17,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    form.reset("");
 
     loggedUser(email, password)
       .then(result => {
@@ -23,9 +26,8 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch(error => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setFirebaseError(errorMessage);
       });
   };
 
@@ -63,7 +65,7 @@ const Login = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login Form!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl ">
+        <div className="card flex-shrink-0 w-full max-w-xl shadow-xl">
           <div className="card-body">
             <form onSubmit={handleLoggedInUser}>
               <div className="form-control">
@@ -90,7 +92,8 @@ const Login = () => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control mt-6">
+              <p className="text-warning mt-2">{firebaseError}</p>
+              <div className="form-control mt-4">
                 <button type="submit" className="btn btn-accent text-white">
                   Login
                 </button>

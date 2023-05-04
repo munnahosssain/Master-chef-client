@@ -8,7 +8,7 @@ const Login = () => {
   const { loggedUser, googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state.from.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
 
   const handleLoggedInUser = event => {
     event.preventDefault();

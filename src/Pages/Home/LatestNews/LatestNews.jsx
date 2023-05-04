@@ -12,7 +12,7 @@ const LatestNews = () => {
         <h1 className="text-5xl my-5 font-semibold">Latest Chef News</h1>
       </div>
       <div className="justify-center gap-5 grid lg:grid-cols-3">
-        <div className="card w-96 bg-base-100 shadow-md">
+        <div className="card lg:w-96 bg-base-100 shadow-md">
           <figure className="px-10 pt-10">
             <img src={news1} alt="news image" className="rounded-md" />
           </figure>
@@ -24,7 +24,7 @@ const LatestNews = () => {
             <h2 className="card-title">How to cook perfect prime meat</h2>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-md">
+        <div className="card lg:w-96 bg-base-100 shadow-md">
           <figure className="px-10 pt-10">
             <img src={news2} alt="news image" className="rounded-md" />
           </figure>
@@ -36,7 +36,7 @@ const LatestNews = () => {
             <h2 className="card-title">How to cook perfect prime meat</h2>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-md">
+        <div className="card lg:w-96 bg-base-100 shadow-md">
           <figure className="px-10 pt-10">
             <img src={news3} alt="news image" className="rounded-md" />
           </figure>

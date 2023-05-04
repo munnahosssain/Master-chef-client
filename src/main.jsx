@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: ":id",
+        path: "/chef-info/:id",
         element: (
           <PrivateRoute>
             <RecipeInformation />

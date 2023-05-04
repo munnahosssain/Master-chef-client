@@ -79,7 +79,6 @@ const Header = () => {
                 </div>
               </label>
             )}
-
             {user ? (
               <button onClick={handleLogOut} className="btn">
                 LogOut

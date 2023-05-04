@@ -14,7 +14,17 @@ const Header = () => {
     </>
   );
 
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch(error => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className="bg-[#042f2e] text-neutral-content">
@@ -53,14 +63,22 @@ const Header = () => {
             <ul className="menu menu-horizontal px-1">{navMenu}</ul>
           </div>
           <div className="navbar-end">
-            <label className="btn btn-ghost btn-circle avatar mr-4">
-              <div className="w-10 rounded-full">
-                <img src="" alt="user photo" />
-              </div>
-            </label>
-            <Link to="/login" className="btn">
-              {user.displayName}
-            </Link>
+            {user && (
+              <label className="btn btn-ghost btn-circle avatar mr-4">
+                <div className="w-10 rounded-full">
+                  <img src="" alt="user photo" />
+                </div>
+              </label>
+            )}
+            {user ? (
+              <button onClick={handleLogOut} className="btn">
+                LogOut
+              </button>
+            ) : (
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

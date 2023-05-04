@@ -9,7 +9,7 @@ const LatestNews = () => {
     <div className="lg:mx-48 my-32">
       <div className="text-center">
         <h3 className="text-2xl">Our Bestseller</h3>
-        <h1 className="text-5xl my-5 font-semibold">Latest Chop News</h1>
+        <h1 className="text-5xl my-5 font-semibold">Latest Chef News</h1>
       </div>
       <div className="justify-center gap-5 grid lg:grid-cols-3">
         <div className="card w-96 bg-base-100 shadow-md">

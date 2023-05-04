@@ -59,7 +59,9 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <p>Copyright © {showCurrentYear()} - All right reserved by Master</p>
+        <p>
+          Copyright © {showCurrentYear()} - All right reserved by Master Chef
+        </p>
       </div>
     </footer>
   );

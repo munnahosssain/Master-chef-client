@@ -6,6 +6,7 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [firebaseError, setFirebaseError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const { loggedUser, googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -17,12 +18,14 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    form.reset("");
+
+    setFirebaseError("");
 
     loggedUser(email, password)
       .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        setSuccess(loggedUser);
+        form.reset();
         navigate(from, { replace: true });
       })
       .catch(error => {
@@ -35,13 +38,11 @@ const Login = () => {
     googleSignIn()
       .then(result => {
         const googleUser = result.user;
-        console.log(googleUser);
         navigate(from, { replace: true });
       })
       .catch(error => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setFirebaseError(errorMessage);
       });
   };
 
@@ -92,6 +93,7 @@ const Login = () => {
                   className="input input-bordered"
                 />
               </div>
+              <p className="text-success mt-2">{success}</p>
               <p className="text-warning mt-2">{firebaseError}</p>
               <div className="form-control mt-4">
                 <button type="submit" className="btn btn-accent text-white">

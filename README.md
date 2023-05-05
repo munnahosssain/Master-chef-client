@@ -47,15 +47,16 @@ The following are the inputs contained in the contact us form:
 
 ### The table below shows the form sections and inputs that are in the sections
 
-| Section          | Inputs            |
-| ---------------- | ----------------- | --- |
-| Register Details | User name         |
-|                  | Photo Url         |     |
-|                  | User Email        |     |
-|                  | User Password     |     |
-| Login Details    | User name         |
-|                  | User Password     |     |
-| Submit           | Register or Login |
+| Section | Inputs |
+|--------------|--------------|
+| Register Details | User name |
+| | Photo Url | |
+| | User Email | |
+| | User Password | |
+| Login Details | User name |
+| | User Password | |
+| Submit | Register or Login |
+
 
 ## Final thoughts
 

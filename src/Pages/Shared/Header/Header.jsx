@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user, logOut, createProfile } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -12,21 +12,28 @@ const Header = () => {
         console.log(loggedOut);
       })
       .catch(error => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.log(errorMessage);
       });
   };
 
-  // console.log(createProfile);
-
   const navMenu = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
+      <li className="mx-2">
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Home
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/blog">Blog</NavLink>
+      <li className="mx-2">
+        <NavLink
+          to="/blog"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Blog
+        </NavLink>
       </li>
     </>
   );
@@ -55,7 +62,7 @@ const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
               >
                 {navMenu}
               </ul>
@@ -65,7 +72,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{navMenu}</ul>
+            <ul className="menu-horizontal px-4">{navMenu}</ul>
           </div>
           <div className="navbar-end">
             {user && (

@@ -7,13 +7,8 @@ import Loading from "../../Shared/Loading/Loading";
 const RecipeInformation = () => {
   const chefsData = useLoaderData();
   const recipes = chefsData.recipes;
-  // const [loading, setLoading] = useState(true);
-  // setTimeout(() => {
-  //   setLoading(false);
-  // }, 2000);
 
   const navigate = useNavigate();
-  // console.log(navigate.state);
   if (navigate.state === "loading") {
     return <Loading />;
   }

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    @apply font-bold tracking-wide transition-colors duration-200 text-lg
+}
+
+.default {
+    @apply tracking-wide text-white transition-colors duration-200 text-lg
+}

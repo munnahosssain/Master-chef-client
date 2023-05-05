@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import picture from "../../../assets/images/meat.jpg";
 import StarRatings from "react-star-ratings";
 import { toast } from "react-toastify";
 import { MdFavorite } from "react-icons/md";
@@ -10,9 +9,8 @@ const Recipes = ({ recipe }) => {
 
   const handleFavorite = () => {
     setFavorite(!favorite);
+    toast("Added to Favorites!");
   };
-
-  const notify = () => toast("Added to Favorites!");
 
   return (
     <div className="hero my-12">
@@ -45,11 +43,10 @@ const Recipes = ({ recipe }) => {
             <MdFavorite
               onClick={() => {
                 handleFavorite();
-                notify();
               }}
               size={48}
               color={favorite ? "gray" : "red"}
-              className={`${favorite ? "btn-disabled" : ""}`}
+              className={`${favorite ? "disabled" : ""}`}
             />
           </div>
         </div>

@@ -3,6 +3,8 @@ import Banner from "../Banner/Banner";
 import Chefs from "../Chefs/Chefs";
 import ChefServices from "../ChefServices/ChefServices";
 import LatestNews from "../LatestNews/LatestNews";
+import Review from "../../Blog/Review/Review";
+import Olive from "../Olive/Olive";
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
       <Chefs />
       <ChefServices />
       <LatestNews />
+      <Olive />
+      <Review />
     </div>
   );
 };

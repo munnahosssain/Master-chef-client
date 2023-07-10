@@ -3,9 +3,17 @@
 @tailwind utilities;
 
 .active {
-    @apply font-bold tracking-wide transition-colors duration-200 text-lg
+  @apply font-bold tracking-wide transition-colors duration-200 text-lg;
 }
 
 .default {
-    @apply tracking-wide text-white transition-colors duration-200 text-lg
+  @apply tracking-wide text-white transition-colors duration-200 text-lg;
+}
+
+.bg-image {
+  position: sticky;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("./assets/images/Oils-Vinegars.jpg");
 }
